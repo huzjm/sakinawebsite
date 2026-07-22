@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Inter } from "next/font/google";
+import MobileBuyButton from "@/components/MobileBuyButton";
 import { Playfair_Display, Lora } from "next/font/google";
 import "./globals.css";
+import PageTransition from "@/components/PageTransition";
 
 
 const playfair = Playfair_Display({
@@ -11,16 +12,7 @@ const playfair = Playfair_Display({
   subsets:["latin"],
 
 });
-const cormorant = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-serif",
-});
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-sans",
-});
 const lora = Lora({
 
   variable:"--font-lora",
@@ -71,8 +63,12 @@ antialiased
 
 >
 
+<PageTransition>
+
 {children}
 
+</PageTransition>
+<MobileBuyButton />
 </body>
 
 

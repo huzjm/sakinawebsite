@@ -4,34 +4,46 @@ import { motion } from "framer-motion";
 
 
 const highlights = [
-  {
-    title: "Emotional Journey",
-    text: "A story filled with emotions, experiences, and meaningful moments."
-  },
 
-  {
-    title: "Beautiful Storytelling",
-    text: "Carefully written words that connect with the reader."
-  },
+{
+title:"Emotional Journey",
 
-  {
-    title: "Memorable Moments",
-    text: "A book designed to stay with you beyond the final page."
-  }
+text:
+"A heartfelt experience exploring emotions, relationships, and moments that shape who we become."
+
+},
+
+{
+title:"Beautiful Storytelling",
+
+text:
+"Carefully crafted words that invite readers into a meaningful and memorable world."
+
+},
+
+{
+title:"Lasting Memories",
+
+text:
+"A story created to stay with you long after the final page has been read."
+
+}
 
 ];
 
 
+
 export default function BookHighlights(){
+
 
 return (
 
 <section
 
 className="
-py-24
+py-32
 px-6
-bg-[#f8f4fb]
+bg-[#FCF8F5]
 "
 
 >
@@ -48,20 +60,34 @@ text-center
 >
 
 
-<p
+<motion.p
+
+initial={{
+opacity:0
+}}
+
+whileInView={{
+opacity:1
+}}
+
+viewport={{
+once:true
+}}
 
 className="
 uppercase
-tracking-[0.3em]
+tracking-[0.35em]
 text-sm
-text-purple-700
+text-[#6B3A5B]
 "
 
 >
 
 Inside The Book
 
-</p>
+</motion.p>
+
+
 
 
 
@@ -69,7 +95,8 @@ Inside The Book
 
 className="
 text-5xl
-mt-6
+md:text-6xl
+mt-8
 "
 
 >
@@ -81,12 +108,32 @@ A Story Worth Experiencing
 
 
 
+
+<div
+
+className="
+mt-8
+text-[#C48B9F]
+text-3xl
+"
+
+>
+
+✦
+
+</div>
+
+
+
+
+
+
 <div
 
 className="
 grid
 md:grid-cols-3
-gap-8
+gap-10
 mt-16
 "
 
@@ -94,37 +141,62 @@ mt-16
 
 
 {
+
 highlights.map((item,index)=>(
 
 
 <motion.div
 
+
 key={item.title}
 
+
 initial={{
+
 opacity:0,
-y:30
+
+y:40
+
 }}
+
+
 
 whileInView={{
+
 opacity:1,
+
 y:0
+
 }}
+
+
 
 viewport={{
+
 once:true
+
 }}
 
+
+
 transition={{
+
 delay:index*0.15
+
 }}
+
+
 
 className="
 bg-white
-rounded-2xl
-p-8
-shadow-sm
+rounded-3xl
+p-10
+border
+border-[#ead9df]
+hover:-translate-y-2
+transition
 "
+
 
 >
 
@@ -132,8 +204,8 @@ shadow-sm
 <div
 
 className="
+text-[#C48B9F]
 text-3xl
-text-purple-700
 "
 
 >
@@ -147,8 +219,8 @@ text-purple-700
 <h3
 
 className="
-text-2xl
-mt-5
+text-3xl
+mt-6
 "
 
 >
@@ -159,10 +231,11 @@ mt-5
 
 
 
+
 <p
 
 className="
-mt-4
+mt-5
 text-gray-600
 leading-relaxed
 "
@@ -176,6 +249,7 @@ leading-relaxed
 
 
 </motion.div>
+
 
 
 ))
@@ -194,6 +268,5 @@ leading-relaxed
 
 
 );
-
 
 }

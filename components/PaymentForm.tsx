@@ -1,34 +1,47 @@
+
 "use client";
 
 import { useState } from "react";
 
 
-export default function PaymentForm() {
+export default function PaymentForm(){
 
-const [submitted, setSubmitted] = useState(false);
+const [submitted,setSubmitted] = useState(false);
+
 
 
 async function handleSubmit(
 e: React.SyntheticEvent<HTMLFormElement>
-) {
+){
 
 e.preventDefault();
 
 
 const form = e.currentTarget;
 
+
 const data = new FormData(form);
 
 
+
 const response = await fetch(
+
 "https://formspree.io/f/mnjezyzg",
+
 {
+
 method:"POST",
+
 body:data,
+
 headers:{
+
 Accept:"application/json",
+
 },
+
 }
+
 );
 
 
@@ -41,7 +54,9 @@ form.reset();
 
 }
 
+
 }
+
 
 
 
@@ -52,20 +67,42 @@ return (
 <div
 
 className="
-bg-green-50
+max-w-3xl
+mx-auto
+bg-white
+rounded-3xl
 border
-border-green-200
-rounded-2xl
-p-8
+border-[#ead9df]
+p-12
 text-center
+shadow-sm
 "
 
 >
 
-<h2
+
+<div
+
 className="
-text-3xl
+text-5xl
+text-[#C48B9F]
 "
+
+>
+
+✦
+
+</div>
+
+
+
+<h2
+
+className="
+text-4xl
+mt-6
+"
+
 >
 
 Order Received
@@ -73,26 +110,37 @@ Order Received
 </h2>
 
 
+
 <p
+
 className="
-mt-4
+mt-6
 text-gray-600
+text-lg
+leading-relaxed
 "
+
 >
 
-Thank you for your purchase request.
+Thank you for your order.
 
-Please send your payment screenshot on WhatsApp
-for confirmation.
+After payment confirmation, your ebook will be
+delivered to your email.
+
+For faster confirmation, please send your
+payment screenshot through WhatsApp.
 
 </p>
 
 
+
 </div>
 
-);
+)
 
 }
+
+
 
 
 
@@ -103,75 +151,118 @@ return (
 onSubmit={handleSubmit}
 
 className="
+max-w-3xl
+mx-auto
 bg-white
+rounded-3xl
 border
-border-purple-100
-rounded-2xl
-p-10
-mt-12
+border-[#ead9df]
+p-8
+md:p-12
+shadow-sm
 space-y-6
 "
 
 >
 
 
-<h2
+
+<div className="text-center">
+
+
+<p
+
 className="
-text-3xl
+uppercase
+tracking-[0.3em]
+text-sm
+text-[#6B3A5B]
 "
+
 >
 
-Complete Your Order
+Complete Order
+
+</p>
+
+
+<h2
+
+className="
+text-4xl
+mt-5
+"
+
+>
+
+Payment Details
 
 </h2>
+
+
+</div>
+
+
+
 
 
 
 <div
 
 className="
-bg-[#f8f4fb]
-rounded-xl
+bg-[#FCF8F5]
+rounded-2xl
 p-6
-text-left
-space-y-2
 "
 
 >
 
 
 <h3
+
 className="
-text-xl
+text-2xl
 "
+
 >
 
-Bank Transfer Details
+Bank Transfer
 
 </h3>
 
 
-<p>
-<strong>Bank:</strong> Your Bank Name
+
+<p className="mt-4 text-gray-600">
+
+Bank: Your Bank Name
+
 </p>
 
 
-<p>
-<strong>Account Name:</strong> Sakina Shoaib
+<p className="text-gray-600">
+
+Account Name: Sakina Shoaib
+
 </p>
 
 
-<p>
-<strong>Account Number:</strong> XXXXXXXX
+<p className="text-gray-600">
+
+Account Number: XXXXXXXX
+
 </p>
 
 
-<p>
-<strong>IBAN:</strong> PK00 XXXX XXXX
+<p className="text-gray-600">
+
+IBAN: PK00 XXXX XXXX
+
 </p>
 
 
 </div>
+
+
 
 
 
@@ -185,12 +276,15 @@ placeholder="Full Name"
 
 className="
 w-full
+rounded-xl
 border
-rounded-lg
-p-3
+p-4
+focus:outline-none
+focus:border-[#6B3A5B]
 "
 
 />
+
 
 
 
@@ -206,12 +300,15 @@ placeholder="Email Address"
 
 className="
 w-full
+rounded-xl
 border
-rounded-lg
-p-3
+p-4
+focus:outline-none
+focus:border-[#6B3A5B]
 "
 
 />
+
 
 
 
@@ -225,12 +322,16 @@ placeholder="WhatsApp Number"
 
 className="
 w-full
+rounded-xl
 border
-rounded-lg
-p-3
+p-4
+focus:outline-none
+focus:border-[#6B3A5B]
 "
 
 />
+
+
 
 
 
@@ -244,12 +345,16 @@ placeholder="Transaction ID"
 
 className="
 w-full
+rounded-xl
 border
-rounded-lg
-p-3
+p-4
+focus:outline-none
+focus:border-[#6B3A5B]
 "
 
 />
+
+
 
 
 
@@ -259,16 +364,17 @@ name="book"
 
 className="
 w-full
+rounded-xl
 border
-rounded-lg
-p-3
+p-4
 "
 
 >
 
 <option>
-Ebook PDF
+Digital Ebook
 </option>
+
 
 <option>
 Paperback
@@ -280,57 +386,44 @@ Paperback
 
 
 
+
 <textarea
 
 name="message"
 
-placeholder="Additional message"
-
 rows={4}
+
+placeholder="Message (optional)"
 
 className="
 w-full
+rounded-xl
 border
-rounded-lg
-p-3
+p-4
 "
 
 />
 
 
 
+
 <div
 
 className="
-bg-purple-50
+bg-[#f3e5eb]
 rounded-xl
 p-5
-text-left
+text-gray-700
 "
 
 >
 
-<p>
-
-After submitting, please send your payment screenshot to:
-
-</p>
-
-
-<p
-className="
-font-semibold
-mt-2
-text-purple-700
-"
->
-
-WhatsApp: +92 XXX XXXXXXX
-
-</p>
-
+After submitting your order,
+please send your payment screenshot through WhatsApp
+for confirmation.
 
 </div>
+
 
 
 
@@ -339,12 +432,13 @@ WhatsApp: +92 XXX XXXXXXX
 
 className="
 w-full
-bg-purple-700
+bg-[#6B3A5B]
 text-white
-py-3
+py-4
 rounded-full
-hover:bg-purple-800
-transition
+text-lg
+hover:-translate-y-1
+hover:shadow-lg
 "
 
 >
@@ -358,5 +452,6 @@ Submit Order
 </form>
 
 );
+
 
 }

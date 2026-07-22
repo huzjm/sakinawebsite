@@ -2,172 +2,312 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { siteData } from "@/data/site";
+
+
 export default function Hero() {
-  return (
-    <section
-      className="
-      min-h-screen
-      flex
-      items-center
-      justify-center
-      px-6
-      py-20
-      "
-    >
 
-      <div
-        className="
-        max-w-6xl
-        w-full
-        grid
-        md:grid-cols-2
-        gap-16
-        items-center
-        "
-      >
+return (
+
+<section
+
+className="
+relative
+min-h-screen
+flex
+items-center
+justify-center
+px-6
+py-24
+overflow-hidden
+"
+
+>
 
 
-        {/* Book Image */}
+{/* Background decoration */}
 
-        <motion.div
-          initial={{
-            opacity:0,
-            y:40
-          }}
-          animate={{
-            opacity:1,
-            y:0
-          }}
-          transition={{
-            duration:0.8
-          }}
-          className="
-          flex
-          justify-center
-          "
-        >
+<div
 
-          <Image
-            src={siteData.book.cover}
-            alt={siteData.book.title}
-            width={400}
-            height={600}
-            className="
-            rounded-lg
-            shadow-xl
-            "
-          />
+className="
+absolute
+top-20
+left-1/2
+-translate-x-1/2
+w-125
+h-125
+bg-[#f3e5eb]
+rounded-full
+blur-3xl
+opacity-60
+"
 
-        </motion.div>
+>
 
 
 
-        {/* Text */}
-
-        <motion.div
-
-          initial={{
-            opacity:0,
-            x:40
-          }}
-
-          animate={{
-            opacity:1,
-            x:0
-          }}
-
-          transition={{
-            duration:0.8
-          }}
-
-        >
-
-          <p
-            className="
-            uppercase
-            tracking-[0.3em]
-            text-sm
-            text-purple-700
-            mb-5
-            "
-          >
-            A New Release
-          </p>
-
-
-          <h1
-            className="
-            text-6xl
-            leading-tight
-            text-gray-800
-            "
-          >
-            {siteData.book.title}
-          </h1>
-
-
-          <p
-            className="
-            mt-6
-            text-lg
-            text-gray-600
-            leading-relaxed
-            "
-          >
-           {siteData.book.tagline}
-          </p>
+</div>
 
 
 
-          <div
-            className="
-            flex
-            gap-5
-            mt-10
-            "
-          >
 
-            <button
-              className="
-              bg-purple-700
-              text-white
-              px-8
-              py-3
-              rounded-full
-              hover:bg-purple-800
-              transition
-              "
-            >
-              Buy The Book
-            </button>
+<div
+
+className="
+relative
+max-w-5xl
+mx-auto
+text-center
+"
+
+>
 
 
-            <button
-              className="
-              border
-              border-purple-700
-              text-purple-700
-              px-8
-              py-3
-              rounded-full
-              hover:bg-purple-50
-              transition
-              "
-            >
-              Learn More
-            </button>
+<motion.p
+
+initial={{
+opacity:0,
+y:-20
+}}
+
+animate={{
+opacity:1,
+y:0
+}}
+
+transition={{
+duration:.7
+}}
+
+className="
+uppercase
+tracking-[0.35em]
+text-sm
+text-[#6B3A5B]
+"
+
+>
+
+New Release
+
+</motion.p>
 
 
-          </div>
 
 
-        </motion.div>
+
+<motion.div
+
+initial={{
+opacity:0,
+scale:.9
+}}
+
+animate={{
+opacity:1,
+scale:1
+}}
+
+transition={{
+duration:.8
+}}
+
+className="
+mt-10
+flex
+justify-center
+"
+
+>
 
 
-      </div>
+<motion.div
+
+whileHover={{
+
+scale:1.05,
+
+rotate:2
+
+}}
+
+whileTap={{
+
+scale:0.98
+
+}}
+
+transition={{
+
+type:"spring",
+
+stiffness:200
+
+}}
+
+>
 
 
-    </section>
-  );
+<Image
+
+src={siteData.book.cover}
+
+alt={siteData.book.title}
+
+width={350}
+
+height={520}
+
+className="
+rounded-xl
+shadow-2xl
+"
+priority
+/>
+
+
+</motion.div>
+
+
+</motion.div>
+
+
+
+
+
+<motion.h1
+
+initial={{
+opacity:0,
+y:30
+}}
+
+animate={{
+opacity:1,
+y:0
+}}
+
+transition={{
+delay:.2,
+duration:.8
+}}
+
+className="
+text-6xl
+md:text-7xl
+mt-12
+text-[#2B2B2B]
+"
+
+>
+
+{siteData.book.title}
+
+</motion.h1>
+
+
+
+
+
+<div
+
+className="
+flex
+justify-center
+my-8
+"
+
+>
+
+<span
+
+className="
+text-[#C48B9F]
+text-2xl
+"
+
+>
+
+✦
+
+</span>
+
+
+</div>
+
+
+
+
+
+<motion.p
+
+initial={{
+opacity:0,
+y:20
+}}
+
+animate={{
+opacity:1,
+y:0
+}}
+
+transition={{
+delay:.4,
+duration:.8
+}}
+
+className="
+max-w-2xl
+mx-auto
+text-lg
+text-gray-600
+leading-relaxed
+"
+
+>
+
+{siteData.book.tagline}
+
+</motion.p>
+
+
+
+
+
+
+<Link
+
+href="/buy"
+
+className="
+inline-block
+mt-10
+bg-[#6B3A5B]
+text-white
+px-10
+py-4
+rounded-full
+shadow-lg
+hover:-translate-y-1
+hover:shadow-xl
+"
+
+>
+
+Purchase The Book
+
+</Link>
+
+
+
+</div>
+
+
+
+</section>
+
+
+);
+
 }

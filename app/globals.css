@@ -1,40 +1,79 @@
 @import "tailwindcss";
 
+
 :root {
-  --background: #fcfbfa;
-  --foreground: #2a2a2a;
 
-  --purple: #8b5fbf;
-  --light-purple: #ece6f8;
-  --rose: #d8a7b1;
-  --gold: #c5a15a;
+--background:
+#FCF8F5;
+
+--foreground:
+#2B2B2B;
+
+--plum:
+#6B3A5B;
+
+--rose:
+#C48B9F;
+
 }
 
-* {
-  box-sizing: border-box;
-}
+
 
 html {
-  scroll-behavior: smooth;
+
+scroll-behavior:smooth;
+
 }
 
+
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans), sans-serif;
+
+background:
+var(--background);
+
+color:
+var(--foreground);
+
+font-family:
+var(--font-lora),
+serif;
+
 }
+
+
 
 h1,
 h2,
 h3,
 h4 {
-  font-family: var(--font-serif), serif;
+
+font-family:
+var(--font-playfair),
+serif;
+
+letter-spacing:
+-0.02em;
+
 }
 
+
+
+button,
 a {
-  text-decoration: none;
+
+transition:
+all .3s ease;
+
 }
 
-button {
-  cursor: pointer;
+
+
+::selection {
+
+background:
+#C48B9F;
+
+color:white;
+
 }

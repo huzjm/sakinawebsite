@@ -1,28 +1,26 @@
+import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import BookPurchaseCard from "@/components/BookPurchaseCard";
 import PaymentForm from "@/components/PaymentForm";
 import PurchaseInfo from "@/components/PurchaseInfo";
-import FAQ from "@/components/FAQ"; 
-export default function BuyPage() {
+import FAQ from "@/components/FAQ";
+import { siteData } from "@/data/site";
 
+
+export default function BuyPage(){
 
 return (
 
 <main>
 
-
 <Navbar />
-
 
 
 <section
 
 className="
-min-h-screen
+py-32
 px-6
-py-24
-bg-[#fcfbfa]
 "
 
 >
@@ -33,6 +31,14 @@ bg-[#fcfbfa]
 className="
 max-w-6xl
 mx-auto
+"
+
+>
+
+
+<div
+
+className="
 text-center
 "
 
@@ -43,16 +49,17 @@ text-center
 
 className="
 uppercase
-tracking-[0.3em]
+tracking-[0.35em]
 text-sm
-text-purple-700
+text-[#6B3A5B]
 "
 
 >
 
-Purchase
+Book Store
 
 </p>
+
 
 
 
@@ -60,14 +67,18 @@ Purchase
 
 className="
 text-6xl
-mt-6
+mt-8
 "
 
 >
 
-Get The Book
+Own A Copy
 
 </h1>
+
+
+</div>
+
 
 
 
@@ -77,47 +88,256 @@ Get The Book
 className="
 grid
 md:grid-cols-2
-gap-10
-mt-16
+gap-16
+items-center
+mt-20
 "
 
 >
 
 
-<BookPurchaseCard
 
-title="Ebook PDF"
+<div
 
-price="PKR 750"
-
-description="
-Receive the digital edition after payment confirmation.
+className="
+flex
+justify-center
 "
 
-buttonText="Buy Ebook"
+>
+
+
+<Image
+
+src={siteData.book.cover}
+
+alt={siteData.book.title}
+
+width={400}
+
+height={600}
+
+className="
+rounded-3xl
+shadow-2xl
+"
 
 />
 
 
+</div>
 
 
-<BookPurchaseCard
 
-title="Paperback"
 
-price="PKR 2000"
 
-description="
-Receive the physical printed copy delivered to your address.
+
+
+<div>
+
+<h2
+
+className="
+text-5xl
 "
 
-buttonText="Order Paperback"
+>
 
-/>
+{siteData.book.title}
+
+</h2>
+
+
+
+<p
+
+className="
+mt-6
+text-lg
+text-gray-600
+leading-relaxed
+"
+
+>
+
+{siteData.book.tagline}
+
+</p>
+
+
+
+
+<div
+
+className="
+mt-10
+space-y-6
+"
+
+>
+
+
+
+<div
+
+className="
+bg-white
+border
+border-[#ead9df]
+rounded-3xl
+p-8
+"
+
+>
+
+
+<h3
+
+className="
+text-3xl
+"
+
+>
+
+Digital Edition
+
+</h3>
+
+
+<p
+
+className="
+mt-3
+text-gray-600
+"
+
+>
+
+PDF ebook delivered after payment confirmation.
+
+</p>
+
+
+<p
+
+className="
+text-2xl
+mt-5
+text-[#6B3A5B]
+"
+
+>
+
+{siteData.book.ebookPrice}
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div
+
+className="
+bg-white
+border
+border-[#ead9df]
+rounded-3xl
+p-8
+"
+
+>
+
+
+<h3
+
+className="
+text-3xl
+"
+
+>
+
+Paperback Edition
+
+</h3>
+
+
+<p
+
+className="
+mt-3
+text-gray-600
+"
+
+>
+
+Physical copy delivered after order confirmation.
+
+</p>
+
+
+<p
+
+className="
+text-2xl
+mt-5
+text-[#6B3A5B]
+"
+
+>
+
+{siteData.book.paperbackPrice}
+
+</p>
+
+
+</div>
 
 
 
 </div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<div className="mt-32">
+
+<PurchaseInfo />
+
+</div>
+
+
+
+
+<div className="mt-32">
+
+
+<PaymentForm />
+
+
+</div>
+
+
+
+
+<div className="mt-32">
+
+<FAQ />
+
+</div>
+
 
 
 </div>
@@ -125,9 +345,6 @@ buttonText="Order Paperback"
 
 </section>
 
-<PurchaseInfo />
-
-<FAQ />
 
 <Footer />
 
@@ -136,6 +353,5 @@ buttonText="Order Paperback"
 
 
 );
-
 
 }

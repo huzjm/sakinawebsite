@@ -1,30 +1,121 @@
 "use client";
+
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { siteData } from "@/data/site";
 
 
-export default function AuthorPreview() {
+export default function AuthorPreview(){
 
 return (
 
 <section
+
 className="
-py-24
+py-32
 px-6
 "
+
 >
 
+
 <div
+
 className="
 max-w-6xl
 mx-auto
+"
+
+>
+
+
+<motion.div
+
+initial={{
+opacity:0
+}}
+
+whileInView={{
+opacity:1
+}}
+
+viewport={{
+once:true
+}}
+
+className="
+text-center
+mb-16
+"
+
+>
+
+<p
+
+className="
+uppercase
+tracking-[0.35em]
+text-sm
+text-[#6B3A5B]
+"
+
+>
+
+The Author
+
+</p>
+
+
+
+<h2
+
+className="
+text-5xl
+md:text-6xl
+mt-6
+"
+
+>
+
+{siteData.author.name}
+
+</h2>
+
+
+
+<div
+
+className="
+mt-6
+text-[#C48B9F]
+text-2xl
+"
+
+>
+
+✦
+
+</div>
+
+
+</motion.div>
+
+
+
+
+
+<div
+
+className="
 grid
 md:grid-cols-2
 gap-16
 items-center
 "
+
 >
+
 
 
 <motion.div
@@ -43,7 +134,13 @@ viewport={{
 once:true
 }}
 
+className="
+flex
+justify-center
+"
+
 >
+
 
 <Image
 
@@ -51,17 +148,23 @@ src={siteData.author.image}
 
 alt={siteData.author.name}
 
-width={400}
+width={450}
 
-height={400}
+height={450}
 
 className="
-rounded-2xl
-shadow-lg
+rounded-3xl
+shadow-xl
+object-cover
 "
-/>
+
+ />
+
 
 </motion.div>
+
+
+
 
 
 
@@ -85,39 +188,13 @@ once:true
 
 
 <p
+
 className="
-uppercase
-tracking-[0.3em]
-text-sm
-text-purple-700
-"
->
-
-The Author
-
-</p>
-
-
-<h2
-className="
-text-5xl
-mt-5
-"
->
-
-{siteData.author.name}
-
-</h2>
-
-
-
-<p
-className="
-mt-8
 text-lg
 text-gray-600
 leading-relaxed
 "
+
 >
 
 {siteData.author.bio}
@@ -126,31 +203,56 @@ leading-relaxed
 
 
 
-<a
+
+<p
+
+className="
+mt-6
+text-lg
+text-gray-600
+leading-relaxed
+"
+
+>
+
+Through writing, Sakina Shoaib captures emotions,
+experiences, and moments that connect readers
+with stories close to the heart.
+
+</p>
+
+
+
+
+
+<Link
 
 href="/about"
 
 className="
 inline-block
-mt-8
-border
-border-purple-700
-text-purple-700
-px-8
+mt-10
+bg-[#6B3A5B]
+text-white
+px-10
 py-3
 rounded-full
-hover:bg-purple-50
-transition
+hover:-translate-y-1
+shadow-md
 "
 
 >
 
-Read More
+Discover The Author
 
-</a>
+</Link>
+
 
 
 </motion.div>
+
+
+</div>
 
 
 </div>
