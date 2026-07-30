@@ -34,7 +34,8 @@ export const siteData = {
     ],
     pullQuote:
       "It should feel like flowers blooming in the spring.",
-    cover: "/images/book-cover.jpg",
+    cover: "/images/frontcover.jpg",
+    backcover: "/images/backcover.jpg",
     editions: [
       {
         id: "ebook",
@@ -57,8 +58,7 @@ export const siteData = {
     email: "sakinashoaib@yahoo.com",
     instagram: "@slitwith_passion",
     instagramUrl: "https://instagram.com/slitwith_passion",
-    whatsappNumber: "0333 2989820",
-    whatsappUrl: "https://wa.me/923332989820",
+    
   },
 
   payment: {

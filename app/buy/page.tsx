@@ -17,10 +17,10 @@ export default function BuyPage() {
         <div className="max-w-5xl mx-auto grid md:grid-cols-[280px_1fr] gap-12 md:gap-16 items-center">
           <div className="mx-auto md:mx-0">
             <div className="relative w-56 sm:w-64 aspect-[2/3] rounded-md overflow-hidden shadow-[0_30px_60px_-20px_rgba(26,20,14,0.45)] border border-[var(--line)] bg-[var(--paper-deep)]">
-              {siteData.book.cover ? (
+              {siteData.book.backcover ? (
                 <Image
-                  src={siteData.book.cover}
-                  alt={`${siteData.book.title} book cover`}
+                  src={siteData.book.backcover}
+                  alt={`${siteData.book.title} book back cover`}
                   fill
                   sizes="256px"
                   className="object-cover"
