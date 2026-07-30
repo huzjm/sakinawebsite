@@ -1,116 +1,46 @@
-const questions = [
+"use client";
 
-{
-q:"How do I pay?",
-a:"Payment can be made through bank transfer using the provided details."
-},
+import { useState } from "react";
+import { siteData } from "@/data/site";
 
-{
-q:"When will I receive the ebook?",
-a:"After payment confirmation, the ebook will be sent to your email."
-},
+export default function FAQ() {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
 
-{
-q:"Can I order a paperback?",
-a:"Yes. Paperback orders can be placed through the same form."
-},
+  return (
+    <section className="px-6 py-20 md:py-28">
+      <div className="max-w-3xl mx-auto">
+        <div className="text-center mb-12">
+          <p className="eyebrow">Good to Know</p>
+          <h2 className="text-3xl md:text-4xl mt-3">Frequently Asked Questions</h2>
+        </div>
 
-];
-
-
-export default function FAQ(){
-
-return (
-
-<section
-
-className="
-mt-20
-"
-
->
-
-
-<h2
-
-className="
-text-4xl
-text-center
-"
-
->
-
-Frequently Asked Questions
-
-</h2>
-
-
-
-<div
-
-className="
-max-w-3xl
-mx-auto
-mt-10
-space-y-5
-"
-
->
-
-
-{
-questions.map((item)=>(
-
-
-<div
-
-key={item.q}
-
-className="
-border
-rounded-xl
-p-6
-"
-
->
-
-
-<h3
-className="
-text-xl
-"
->
-
-{item.q}
-
-</h3>
-
-
-<p
-className="
-mt-3
-text-gray-600
-"
->
-
-{item.a}
-
-</p>
-
-
-</div>
-
-
-))
-
-}
-
-
-</div>
-
-
-</section>
-
-);
-
+        <div className="space-y-4">
+          {siteData.faq.map((item, i) => {
+            const isOpen = openIndex === i;
+            return (
+              <div key={item.q} className="card overflow-hidden">
+                <button
+                  onClick={() => setOpenIndex(isOpen ? null : i)}
+                  aria-expanded={isOpen}
+                  className="w-full flex items-center justify-between gap-4 text-left px-6 py-5"
+                >
+                  <span className="text-lg text-[var(--plum-deep)] font-[var(--font-playfair)]">{item.q}</span>
+                  <span className={`text-xl text-[var(--gold)] transition-transform duration-300 shrink-0 ${isOpen ? "rotate-45" : ""}`}>
+                    +
+                  </span>
+                </button>
+                <div
+                  className={`grid transition-all duration-300 ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
+                >
+                  <div className="overflow-hidden">
+                    <p className="px-6 pb-5 text-[var(--ink-soft)] leading-relaxed">{item.a}</p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
 }

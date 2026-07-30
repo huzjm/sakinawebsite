@@ -1,75 +1,88 @@
 export const siteData = {
+  site: {
+    name: "CherryLoveRoses",
+    domain: "cherryloveroses.com",
+  },
 
   author: {
     name: "Sakina Shoaib",
-
     title: "Author",
-
-    bio: `
-    Sakina Shoaib is a passionate writer whose work explores
-    emotions, experiences, and stories that connect deeply
-    with readers.
-    `,
-
+    bio: [
+      "Ever since I was fourteen, I loved writing and reading. Little did I know that someday I would be publishing my own books and turning my passion for writing into a career.",
+      "Thank you for coming here and supporting my work. It means the world to me!",
+    ],
     image: "/images/author.jpg",
   },
 
+  home: {
+    greeting: "Hellllo!",
+    welcome: "I'm Sakina.",
+    intro:
+      "Here's my debut, \u201cDear Diary, I've Fallen in Love,\u201d now available to shop.",
+    cta: "Click Here",
+  },
 
   book: {
-
-    title: "Your Book Title",
-
-    tagline:
-      "A story of emotions, memories, and unforgettable moments.",
-
-
-    synopsis: `
-    Add the official book synopsis here.
-    This section introduces readers to the world,
-    themes, and journey behind the book.
-    `,
-
-
-    cover:
-      "/images/book-cover.png",
-
-
-    ebookPrice:
-      "PKR 750",
-
-
-    paperbackPrice:
-      "PKR 2000",
-
+    title: "Dear Diary, I've Fallen in Love",
+    subtitle: "",
+    tagline: "A confession she couldn't outrun.",
+    synopsis: [
+      "Liking someone shouldn\u2019t feel like a needle piercing through your skin. It should feel like flowers blooming in the spring. Then why am I always heartbroken?",
+      "What if, instead of running from my feelings, I confessed? Do you think it\u2019d make a difference?",
+      "Well, that\u2019s how it started. One night, I simply confessed. I thought confessing would end the ache. Instead, it became the very thing I had to run from all over again.",
+      "If you want to know, you\u2019ll have to start from the very beginning.",
+    ],
+    pullQuote:
+      "It should feel like flowers blooming in the spring.",
+    cover: "/images/book-cover.jpg",
+    editions: [
+      {
+        id: "ebook",
+        name: "Ebook",
+        price: "PKR 500",
+        available: true,
+        description: "Delivered by email as a PDF after payment is confirmed.",
+      },
+      {
+        id: "paperback",
+        name: "Paperback",
+        price: "Contact for pricing",
+        available: true,
+        description: "Printed edition \u2014 message for current pricing and delivery.",
+      },
+    ],
   },
-
 
   contact: {
-
-    email:
-      "author@email.com",
-
-    whatsapp:
-      "+92 XXX XXXXXXX",
-
+    email: "sakinashoaib@yahoo.com",
+    instagram: "@slitwith_passion",
+    instagramUrl: "https://instagram.com/slitwith_passion",
+    whatsappNumber: "0333 2989820",
+    whatsappUrl: "https://wa.me/923332989820",
   },
 
-
   payment: {
+    bank: "HBL",
+    accountTitle: "Sakina Shoaib",
+    accountNumber: "08967901337703",
+  },
 
-    bank:
-      "Your Bank Name",
-
-    accountName:
-      "Sakina Shoaib",
-
-    accountNumber:
-      "XXXXXXXX",
-
-    iban:
-      "PK00 XXXX XXXX",
-
-  }
-
-
+  faq: [
+    {
+      q: "How do I pay?",
+      a: "Place your order through the form on the Buy page, then send payment via bank transfer to the HBL account listed there. You can also reach out on WhatsApp if you'd rather confirm details first.",
+    },
+    {
+      q: "When will I receive the ebook?",
+      a: "Once your payment is confirmed, the ebook is emailed to you as a PDF \u2014 usually within a day.",
+    },
+    {
+      q: "Can I order a paperback copy?",
+      a: "Yes. Paperback pricing depends on delivery location, so message on WhatsApp or Instagram and I'll confirm the details with you.",
+    },
+    {
+      q: "Is my payment information safe?",
+      a: "Payments are made directly by bank transfer, so no card or account details are ever entered on this site.",
+    },
+  ],
 };

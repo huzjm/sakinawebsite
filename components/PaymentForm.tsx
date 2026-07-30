@@ -1,457 +1,110 @@
-
 "use client";
 
 import { useState } from "react";
-
-
-export default function PaymentForm(){
-
-const [submitted,setSubmitted] = useState(false);
-
-
-
-async function handleSubmit(
-e: React.SyntheticEvent<HTMLFormElement>
-){
-
-e.preventDefault();
-
-
-const form = e.currentTarget;
-
-
-const data = new FormData(form);
-
-
-
-const response = await fetch(
-
-"https://formspree.io/f/mnjezyzg",
-
-{
-
-method:"POST",
-
-body:data,
-
-headers:{
-
-Accept:"application/json",
-
-},
-
-}
-
-);
-
-
-
-if(response.ok){
-
-setSubmitted(true);
-
-form.reset();
-
-}
-
-
-}
-
-
-
-
-if(submitted){
-
-return (
-
-<div
-
-className="
-max-w-3xl
-mx-auto
-bg-white
-rounded-3xl
-border
-border-[#ead9df]
-p-12
-text-center
-shadow-sm
-"
-
->
-
-
-<div
-
-className="
-text-5xl
-text-[#C48B9F]
-"
-
->
-
-✦
-
-</div>
-
-
-
-<h2
-
-className="
-text-4xl
-mt-6
-"
-
->
-
-Order Received
-
-</h2>
-
-
-
-<p
-
-className="
-mt-6
-text-gray-600
-text-lg
-leading-relaxed
-"
-
->
-
-Thank you for your order.
-
-After payment confirmation, your ebook will be
-delivered to your email.
-
-For faster confirmation, please send your
-payment screenshot through WhatsApp.
-
-</p>
-
-
-
-</div>
-
-)
-
-}
-
-
-
-
-
-return (
-
-<form
-
-onSubmit={handleSubmit}
-
-className="
-max-w-3xl
-mx-auto
-bg-white
-rounded-3xl
-border
-border-[#ead9df]
-p-8
-md:p-12
-shadow-sm
-space-y-6
-"
-
->
-
-
-
-<div className="text-center">
-
-
-<p
-
-className="
-uppercase
-tracking-[0.3em]
-text-sm
-text-[#6B3A5B]
-"
-
->
-
-Complete Order
-
-</p>
-
-
-<h2
-
-className="
-text-4xl
-mt-5
-"
-
->
-
-Payment Details
-
-</h2>
-
-
-</div>
-
-
-
-
-
-
-<div
-
-className="
-bg-[#FCF8F5]
-rounded-2xl
-p-6
-"
-
->
-
-
-<h3
-
-className="
-text-2xl
-"
-
->
-
-Bank Transfer
-
-</h3>
-
-
-
-<p className="mt-4 text-gray-600">
-
-Bank: Your Bank Name
-
-</p>
-
-
-<p className="text-gray-600">
-
-Account Name: Sakina Shoaib
-
-</p>
-
-
-<p className="text-gray-600">
-
-Account Number: XXXXXXXX
-
-</p>
-
-
-<p className="text-gray-600">
-
-IBAN: PK00 XXXX XXXX
-
-</p>
-
-
-</div>
-
-
-
-
-
-<input
-
-name="name"
-
-required
-
-placeholder="Full Name"
-
-className="
-w-full
-rounded-xl
-border
-p-4
-focus:outline-none
-focus:border-[#6B3A5B]
-"
-
-/>
-
-
-
-
-<input
-
-name="email"
-
-required
-
-type="email"
-
-placeholder="Email Address"
-
-className="
-w-full
-rounded-xl
-border
-p-4
-focus:outline-none
-focus:border-[#6B3A5B]
-"
-
-/>
-
-
-
-
-<input
-
-name="phone"
-
-required
-
-placeholder="WhatsApp Number"
-
-className="
-w-full
-rounded-xl
-border
-p-4
-focus:outline-none
-focus:border-[#6B3A5B]
-"
-
-/>
-
-
-
-
-
-<input
-
-name="transaction"
-
-required
-
-placeholder="Transaction ID"
-
-className="
-w-full
-rounded-xl
-border
-p-4
-focus:outline-none
-focus:border-[#6B3A5B]
-"
-
-/>
-
-
-
-
-
-<select
-
-name="book"
-
-className="
-w-full
-rounded-xl
-border
-p-4
-"
-
->
-
-<option>
-Digital Ebook
-</option>
-
-
-<option>
-Paperback
-</option>
-
-
-</select>
-
-
-
-
-
-<textarea
-
-name="message"
-
-rows={4}
-
-placeholder="Message (optional)"
-
-className="
-w-full
-rounded-xl
-border
-p-4
-"
-
-/>
-
-
-
-
-<div
-
-className="
-bg-[#f3e5eb]
-rounded-xl
-p-5
-text-gray-700
-"
-
->
-
-After submitting your order,
-please send your payment screenshot through WhatsApp
-for confirmation.
-
-</div>
-
-
-
-
-
-<button
-
-className="
-w-full
-bg-[#6B3A5B]
-text-white
-py-4
-rounded-full
-text-lg
-hover:-translate-y-1
-hover:shadow-lg
-"
-
->
-
-Submit Order
-
-</button>
-
-
-
-</form>
-
-);
-
-
+import { siteData } from "@/data/site";
+
+export default function PaymentForm() {
+  const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setSending(true);
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    try {
+      await fetch("https://formspree.io/f/mnjezyzg", {
+        method: "POST",
+        body: data,
+        headers: { Accept: "application/json" },
+      });
+      setSubmitted(true);
+    } finally {
+      setSending(false);
+    }
+  }
+
+  if (submitted) {
+    return (
+      <div className="card p-10 sm:p-12 text-center">
+        <p className="font-script text-4xl text-[var(--rose)]">Thank You</p>
+        <p className="mt-5 text-[var(--ink-soft)] leading-relaxed">
+          Your order has been received. Once your payment is verified, your book will be on its way.
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <form id="order-form" onSubmit={handleSubmit} className="card p-8 sm:p-10 space-y-6">
+      <div>
+        <p className="eyebrow">Order Form</p>
+        <h3 className="text-2xl mt-2">Complete Your Order</h3>
+      </div>
+
+      <div>
+        <label htmlFor="name" className="block text-sm text-[var(--ink-soft)] mb-2">Your Name</label>
+        <input
+          id="name"
+          name="name"
+          required
+          placeholder="Full name"
+          className="w-full border-b border-[var(--line)] py-3 outline-none bg-transparent focus:border-[var(--plum)]"
+        />
+      </div>
+
+      <div>
+        <label htmlFor="email" className="block text-sm text-[var(--ink-soft)] mb-2">Email Address</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          required
+          placeholder="you@example.com"
+          className="w-full border-b border-[var(--line)] py-3 outline-none bg-transparent focus:border-[var(--plum)]"
+        />
+      </div>
+
+      <fieldset>
+        <legend className="text-sm text-[var(--ink-soft)] mb-3">Choose Edition</legend>
+        <div className="flex flex-col gap-3">
+          {siteData.book.editions.map((edition, i) => (
+            <label key={edition.id} className="flex items-center gap-3 text-sm cursor-pointer">
+              <input type="radio" name="edition" value={edition.name} defaultChecked={i === 0} className="accent-[var(--plum)]" />
+              {edition.name} &mdash; {edition.price}
+            </label>
+          ))}
+        </div>
+      </fieldset>
+
+      <div>
+        <label htmlFor="paymentReference" className="block text-sm text-[var(--ink-soft)] mb-2">
+          Payment Reference / Transaction ID
+        </label>
+        <input
+          id="paymentReference"
+          name="paymentReference"
+          required
+          placeholder="From your bank transfer receipt"
+          className="w-full border-b border-[var(--line)] py-3 outline-none bg-transparent focus:border-[var(--plum)]"
+        />
+      </div>
+
+      <div>
+        <label htmlFor="message" className="block text-sm text-[var(--ink-soft)] mb-2">Delivery Address / Notes</label>
+        <textarea
+          id="message"
+          name="message"
+          placeholder="For paperback orders, add your full delivery address"
+          rows={4}
+          className="w-full border border-[var(--line)] rounded-xl p-4 outline-none bg-transparent focus:border-[var(--plum)]"
+        />
+      </div>
+
+      <button type="submit" disabled={sending} className="btn-primary w-full disabled:opacity-60">
+        {sending ? "Sending\u2026" : "Confirm Order"}
+      </button>
+    </form>
+  );
 }

@@ -1,357 +1,76 @@
 import Image from "next/image";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import Synopsis from "@/components/Synopsis";
+import EditionCards from "@/components/EditionCards";
 import PaymentForm from "@/components/PaymentForm";
-import PurchaseInfo from "@/components/PurchaseInfo";
+import BankDetails from "@/components/BankDetails";
 import FAQ from "@/components/FAQ";
 import { siteData } from "@/data/site";
 
-
-export default function BuyPage(){
-
-return (
-
-<main>
-
-<Navbar />
-
-
-<section
-
-className="
-py-32
-px-6
-"
-
->
-
-
-<div
-
-className="
-max-w-6xl
-mx-auto
-"
-
->
-
-
-<div
-
-className="
-text-center
-"
-
->
-
-
-<p
-
-className="
-uppercase
-tracking-[0.35em]
-text-sm
-text-[#6B3A5B]
-"
-
->
-
-Book Store
-
-</p>
-
-
-
-
-<h1
-
-className="
-text-6xl
-mt-8
-"
-
->
-
-Own A Copy
-
-</h1>
-
-
-</div>
-
-
-
-
-
-<div
-
-className="
-grid
-md:grid-cols-2
-gap-16
-items-center
-mt-20
-"
-
->
-
-
-
-<div
-
-className="
-flex
-justify-center
-"
-
->
-
-
-<Image
-
-src={siteData.book.cover}
-
-alt={siteData.book.title}
-
-width={400}
-
-height={600}
-
-className="
-rounded-3xl
-shadow-2xl
-"
-
-/>
-
-
-</div>
-
-
-
-
-
-
-
-<div>
-
-<h2
-
-className="
-text-5xl
-"
-
->
-
-{siteData.book.title}
-
-</h2>
-
-
-
-<p
-
-className="
-mt-6
-text-lg
-text-gray-600
-leading-relaxed
-"
-
->
-
-{siteData.book.tagline}
-
-</p>
-
-
-
-
-<div
-
-className="
-mt-10
-space-y-6
-"
-
->
-
-
-
-<div
-
-className="
-bg-white
-border
-border-[#ead9df]
-rounded-3xl
-p-8
-"
-
->
-
-
-<h3
-
-className="
-text-3xl
-"
-
->
-
-Digital Edition
-
-</h3>
-
-
-<p
-
-className="
-mt-3
-text-gray-600
-"
-
->
-
-PDF ebook delivered after payment confirmation.
-
-</p>
-
-
-<p
-
-className="
-text-2xl
-mt-5
-text-[#6B3A5B]
-"
-
->
-
-{siteData.book.ebookPrice}
-
-</p>
-
-
-</div>
-
-
-
-
-
-<div
-
-className="
-bg-white
-border
-border-[#ead9df]
-rounded-3xl
-p-8
-"
-
->
-
-
-<h3
-
-className="
-text-3xl
-"
-
->
-
-Paperback Edition
-
-</h3>
-
-
-<p
-
-className="
-mt-3
-text-gray-600
-"
-
->
-
-Physical copy delivered after order confirmation.
-
-</p>
-
-
-<p
-
-className="
-text-2xl
-mt-5
-text-[#6B3A5B]
-"
-
->
-
-{siteData.book.paperbackPrice}
-
-</p>
-
-
-</div>
-
-
-
-</div>
-
-
-
-</div>
-
-
-
-</div>
-
-
-
-
-
-<div className="mt-32">
-
-<PurchaseInfo />
-
-</div>
-
-
-
-
-<div className="mt-32">
-
-
-<PaymentForm />
-
-
-</div>
-
-
-
-
-<div className="mt-32">
-
-<FAQ />
-
-</div>
-
-
-
-</div>
-
-
-</section>
-
-
-<Footer />
-
-
-</main>
-
-
-);
-
+export const metadata = {
+  title: `Shop | ${siteData.book.title}`,
+};
+
+export default function BuyPage() {
+  return (
+    <>
+      <section className="px-6 pb-8">
+        <div className="max-w-5xl mx-auto grid md:grid-cols-[280px_1fr] gap-12 md:gap-16 items-center">
+          <div className="mx-auto md:mx-0">
+            <div className="relative w-56 sm:w-64 aspect-[2/3] rounded-md overflow-hidden shadow-[0_30px_60px_-20px_rgba(26,20,14,0.45)] border border-[var(--line)] bg-[var(--paper-deep)]">
+              {siteData.book.cover ? (
+                <Image
+                  src={siteData.book.cover}
+                  alt={`${siteData.book.title} book cover`}
+                  fill
+                  sizes="256px"
+                  className="object-cover"
+                  priority
+                />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center text-center p-6 text-sm text-[var(--ink-soft)] font-[var(--font-playfair)]">
+                  {siteData.book.title}
+                </div>
+              )}
+            </div>
+          </div>
+
+          <div className="text-center md:text-left">
+            <p className="eyebrow">The Book</p>
+            <h1 className="text-4xl sm:text-5xl mt-4 leading-[1.1]">{siteData.book.title}</h1>
+            <p className="mt-5 text-[var(--ink-soft)] text-lg italic">{siteData.book.tagline}</p>
+            <p className="mt-6 text-2xl text-[var(--plum-deep)] font-[var(--font-playfair)]">
+              {siteData.book.editions[0].price}
+            </p>
+            <a href="#order-form" className="btn-primary inline-flex mt-6">
+              Order Your Copy
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <Synopsis variant="full" />
+
+      <EditionCards variant="full" />
+
+      <section className="px-6 py-20 md:py-28">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <p className="eyebrow">Complete Your Purchase</p>
+            <h2 className="text-3xl md:text-4xl mt-3">How to Order</h2>
+            <p className="mt-4 text-[var(--ink-soft)] max-w-xl mx-auto leading-relaxed">
+              Transfer payment to the account below, then fill out the order form with your details and
+              transaction reference.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6 items-start">
+            <BankDetails />
+            <PaymentForm />
+          </div>
+        </div>
+      </section>
+
+      <FAQ />
+    </>
+  );
 }
