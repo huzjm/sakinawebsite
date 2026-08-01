@@ -27,6 +27,8 @@ export default function AboutPage() {
                     fill
                     sizes="256px"
                     className="object-cover object-top"
+                    preload={true}
+                    loading="eager"
                   />
                 ) : (
                   <div className="w-full h-full bg-[var(--paper-deep)] flex items-center justify-center text-5xl font-[var(--font-playfair)] text-[var(--plum-deep)]">

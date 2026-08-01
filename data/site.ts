@@ -68,21 +68,21 @@ export const siteData = {
   },
 
   faq: [
-    {
-      q: "How do I pay?",
-      a: "Place your order through the form on the Buy page, then send payment via bank transfer to the HBL account listed there. You can also reach out on WhatsApp if you'd rather confirm details first.",
-    },
-    {
-      q: "When will I receive the ebook?",
-      a: "Once your payment is confirmed, the ebook is emailed to you as a PDF \u2014 usually within a day.",
-    },
-    {
-      q: "Can I order a paperback copy?",
-      a: "Yes. Paperback pricing depends on delivery location, so message on WhatsApp or Instagram and I'll confirm the details with you.",
-    },
-    {
-      q: "Is my payment information safe?",
-      a: "Payments are made directly by bank transfer, so no card or account details are ever entered on this site.",
-    },
-  ],
+  {
+    q: "How do I place an order?",
+    a: "Click \"Order Your Copy\" to open the Bank Transfer & Order Form. Transfer the payment to the bank account provided, then complete and submit the order form.",
+  },
+  {
+    q: "When will I receive the ebook?",
+    a: "Once your payment has been confirmed, your ebook will be emailed to you as a PDF, usually within 24 hours.",
+  },
+  {
+    q: "Can I order a paperback copy?",
+    a: "Yes. Paperback pricing depends on your delivery location. Simply send a message on Instagram at @slitwith_passion. Once the details have been confirmed with you, your order will be placed.",
+  },
+  {
+    q: "Is my payment information safe?",
+    a: "Yes. Payments are made directly by bank transfer, so no card or banking details are collected or stored on this website.",
+  },
+],
 };

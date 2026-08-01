@@ -219,13 +219,36 @@ a, button {
 }
 
 .diary-lines {
+  --diary-line-height: 2.15rem;
   background-image: repeating-linear-gradient(
     to bottom,
     transparent,
-    transparent 2.15rem,
-    var(--line) 2.15rem,
-    var(--line) calc(2.15rem + 1px)
+    transparent var(--diary-line-height),
+    var(--line) var(--diary-line-height),
+    var(--line) calc(var(--diary-line-height) + 1px)
   );
+}
+
+@media (max-width: 640px) {
+  .diary-page {
+    border-radius: 0.2rem 0.2rem 0.9rem 0.9rem;
+  }
+
+  .diary-page::before {
+    display: none;
+  }
+
+  .diary-lines {
+    --diary-line-height: 1.85rem;
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent calc(var(--diary-line-height) - 1px),
+      var(--line) calc(var(--diary-line-height) - 1px),
+      var(--line) var(--diary-line-height)
+    );
+    background-size: 100% var(--diary-line-height);
+  }
 }
 
 .ribbon {
