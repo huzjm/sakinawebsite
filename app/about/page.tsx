@@ -16,7 +16,7 @@ export default function AboutPage() {
         </div>
 
         <div className="grid md:grid-cols-[280px_1fr] gap-12 md:gap-16 items-start">
-          <div className="mx-auto md:mx-0 sticky top-32">
+          <div className="mx-auto md:mx-0 md:sticky md:top-32">
             <div className="relative">
               <div aria-hidden="true" className="absolute -inset-4 rounded-3xl bg-[var(--rose-soft)]/40 rotate-2" />
               <div className="relative w-56 sm:w-64 aspect-[4/5] rounded-2xl overflow-hidden border border-[var(--line)] shadow-[0_30px_60px_-24px_rgba(26,20,14,0.4)] -rotate-1">
