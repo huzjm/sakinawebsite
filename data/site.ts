@@ -47,9 +47,9 @@ export const siteData = {
       {
         id: "paperback",
         name: "Paperback",
-        price: "Contact for pricing",
+        price: "PKR 1500",
         available: true,
-        description: "Printed edition \u2014 message for current pricing and delivery.",
+        description: "Printed edition \u2014 message for current pricing with delivery.",
       },
     ],
   },
